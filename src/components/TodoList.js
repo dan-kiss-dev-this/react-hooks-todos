@@ -11,7 +11,7 @@ export default function TodoList() {
           <li key={todo.id}>
             <span className={`${todo.complete && "line-through"}`} onClick={() => dispatch({ type: 'TOGGLE_TODO', payload: todo })}>{todo.text} </span>
             <span>Edit </span>
-            <span>Remove </span>
+            <span onClick={() => dispatch({type: "REMOVE_TODO", payload: todo})}>Remove </span>
           </li>
         ))}
       </ul>
