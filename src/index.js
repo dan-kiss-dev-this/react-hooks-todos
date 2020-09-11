@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+const userName = "Dave"
+export const UserContext = React.createContext() // returns an object with 2 values, one is provider, other is consumer
+
 ReactDOM.render(
-  <React.StrictMode>
+  <UserContext.Provider value={userName}>
     <App />
-  </React.StrictMode>,
+  </UserContext.Provider>,
   document.getElementById('root')
 );
 
