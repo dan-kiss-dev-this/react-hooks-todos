@@ -8,7 +8,7 @@ export default function reducer(state, action) {
         todos: action.payload
       }
     case "TOGGLE_TODO":
-      const toggledTodos = state.todos.map(t => t.id === action.payload.id ? { ...action.payload, complete: !action.payload.complete } : t)
+      const toggledTodos = state.todos.map(t => t.id === action.payload.id ? action.payload: t)
       return {
         ...state,
         todos: toggledTodos

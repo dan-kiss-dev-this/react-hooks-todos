@@ -31,11 +31,13 @@ export default function TodoForm() {
   return (
     <form onSubmit={handleSubmit}>
       Add Todo <input
-        style={{ backgroundColor: 'silver' }}
+        // style={{ backgroundColor: 'silver' }}
         type="text"
         onChange={e => setTodo(e.target.value)}
         value={todo}
       />
+      &nbsp;
+      <button>Submit</button>
     </form>
   )
 }

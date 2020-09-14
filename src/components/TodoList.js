@@ -10,7 +10,16 @@ export default function TodoList() {
       <ul>
         {state.todos.map(todo => (
           <li key={todo.id}>
-            <span style={{ color: `${todo.complete ? "green": 'red'}`}} className={`${todo.complete && "line-through"}`} onClick={() => dispatch({ type: 'TOGGLE_TODO', payload: todo })}>{todo.text} </span>
+            <span
+              style={{ color: `${todo.complete ? "green" : 'red'}` }}
+              className={`${todo.complete && "line-through"}`} onClick={async () => {
+                const response = await axios.patch(`https://hooks-api-beige.vercel.app/todos/${todo.id}`, {
+                  complete: !todo.complete
+                })
+                dispatch({ type: 'TOGGLE_TODO', payload: response.data })
+              }}>
+              {todo.text}
+            </span>
             <button onClick={() => dispatch({ type: 'SET_CURRENT_TODO', payload: todo })}> Edit </button>
             <button onClick={async () => {
               await axios.delete(`https://hooks-api-beige.vercel.app/todos/${todo.id}`);
