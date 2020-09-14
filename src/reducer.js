@@ -8,7 +8,7 @@ export default function reducer(state, action) {
         todos: action.payload
       }
     case "TOGGLE_TODO":
-      const toggledTodos = state.todos.map(t => t.id === action.payload.id ? action.payload: t)
+      const toggledTodos = state.todos.map(t => t.id === action.payload.id ? action.payload : t)
       return {
         ...state,
         todos: toggledTodos
@@ -36,7 +36,7 @@ export default function reducer(state, action) {
         currentTodo: action.payload
       }
     case "UPDATE_TODO":
-      const updatedTodo = { ...state.currentTodo, text: action.payload };
+      const updatedTodo = { ...action.payload };
       const updatedTodoIndex = state.todos.findIndex(
         t => t.id === state.currentTodo.id
       );
